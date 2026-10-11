@@ -163,6 +163,17 @@ function cancel() {
     if (current.id !== null) request('POST', '/cancel?id=' + current.id).catch(() => { });
 }
 
+// A second OK while listening means "that's all": recognize what was heard.
+function stopListening() {
+    const current = session;
+    if (!current) return;
+    if (current.id === null) {
+        cancel();
+        return;
+    }
+    request('POST', '/stop?id=' + current.id).catch(() => { });
+}
+
 function onKey(evt) {
     if (!configRead('enableVoiceSearch')) return;
 
@@ -180,7 +191,7 @@ function onKey(evt) {
     evt.preventDefault();
     evt.stopImmediatePropagation();
     if (evt.type !== 'keydown' || evt.repeat) return;
-    if (session) cancel();
+    if (session) stopListening();
     else start();
 }
 
@@ -188,7 +199,7 @@ function onClick(evt) {
     if (!configRead('enableVoiceSearch') || !isMicTarget(evt.target)) return;
     evt.preventDefault();
     evt.stopImmediatePropagation();
-    if (session) cancel();
+    if (session) stopListening();
     else start();
 }
 
