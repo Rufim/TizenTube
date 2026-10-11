@@ -61,7 +61,8 @@
                     "videoPreviews": "Предпросмотр видео",
                     "ttWelcomeMsg": "Приветственное сообщение",
                     "guestSignInReminder": "Напоминания о гостевом входе",
-                    "reloadHomeOnStartup": "Обновлять главную при запуске"
+                    "reloadHomeOnStartup": "Обновлять главную при запуске",
+                    "voiceSearch": "Голосовой поиск через GigaAM"
                 }
             },
             "subtitles": {
@@ -293,6 +294,12 @@
         "screenOff": "Выключить экран"
     },
     "toasts": {
+        "voiceSearch": {
+            "title": "Голосовой поиск",
+            "unavailable": "Приложение GigaAM не отвечает на 127.0.0.1:8765. Оно установлено?",
+            "noSpeech": "Речь не услышана. Попробуйте ещё раз.",
+            "noOverlay": "У GigaAM нет разрешения на показ поверх окон (adb shell appops set com.google.android.tts SYSTEM_ALERT_WINDOW allow)."
+        },
         "videoAddedToQueue": "Видео добавлено в очередь.",
         "videoQueueCleared": "Очередь видео очищена.",
         "sidebarContentsUpdated": {

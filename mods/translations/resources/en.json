@@ -61,7 +61,8 @@
                     "videoPreviews": "Enable Video Previews",
                     "ttWelcomeMsg": "Show TT Welcome Message",
                     "guestSignInReminder": "Show Guest Sign In Reminder",
-                    "reloadHomeOnStartup": "Reload Home on Startup"
+                    "reloadHomeOnStartup": "Reload Home on Startup",
+                    "voiceSearch": "Voice Search via Local GigaAM"
                 }
             },
             "subtitles": {
@@ -297,6 +298,12 @@
         "dontRecommendChannel": "Don't recommend channel"
     },
     "toasts": {
+        "voiceSearch": {
+            "title": "Voice search",
+            "unavailable": "The GigaAM app does not respond at 127.0.0.1:8765. Is it installed?",
+            "noSpeech": "No speech heard. Try again.",
+            "noOverlay": "GigaAM has no permission to draw over other apps (adb shell appops set com.google.android.tts SYSTEM_ALERT_WINDOW allow)."
+        },
         "videoAddedToQueue": "Video added to queue.",
         "videoQueueCleared": "Video queue cleared.",
         "feedbackSent": "Feedback sent.",

@@ -68,6 +68,8 @@ const defaultConfig = {
   disableEnlargingThumbnails: false,
   enableShrinkingThumbnails: false,
   hideRelatedVideosPlayer: false,
+  enableVoiceSearch: true,
+  voiceSearchEndpoint: 'http://127.0.0.1:8765',
 };
 
 let localConfig;
