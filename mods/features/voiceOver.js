@@ -346,3 +346,10 @@ configChangeEmitter.addEventListener('configChange', (e) => {
 window.addEventListener('hashchange', () => {
     if (session && currentVideoId() !== session.videoId) stop();
 });
+
+// For the debug bridge (tools/tt-eval.py): tizentubeVoiceOver.toggle() etc.
+window.tizentubeVoiceOver = {
+    toggle: toggleVoiceOver,
+    state: voiceOverButtonState,
+    session: () => session
+};
