@@ -125,7 +125,7 @@ function evaluate(code) {
     try {
         return indirect(code);
     } catch (e) {
-        if (!(e instanceof TypeError) || !window.trustedTypes) throw e;
+        if (!window.trustedTypes || !/trusted/i.test(String(e && e.message))) throw e;
         if (!scriptPolicy) {
             scriptPolicy = window.trustedTypes.createPolicy('tizentube-debug-' + Date.now(), {
                 createScript: (s) => s
