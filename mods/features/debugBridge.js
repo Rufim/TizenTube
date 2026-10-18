@@ -5,7 +5,9 @@
 //  - the page long-polls GET /debug/next for JS snippets queued from the host
 //    (tools/tt-eval.py through `adb forward`), runs them and posts the result
 //    to POST /debug/result.
-// Off by default (Settings -> Miscellaneous).
+// Off by default (Settings -> Miscellaneous). The host can also attach it for
+// the current run only (tools/tt-eval.py --attach): while the setting is off the
+// page asks GET /debug/attached every 15 s.
 
 import { configRead, configChangeEmitter } from '../config.js';
 
@@ -15,15 +17,17 @@ const MAX_BUFFER = 300;
 const POLL_WAIT = 25000;
 const RETRY_DELAY = 5000;
 const EVAL_TIMEOUT = 15000;
+const ATTACH_CHECK_INTERVAL = 15000;
 
 const buffer = [];
 let flushTimer = null;
 let polling = false;
 let hooked = false;
 let scriptPolicy = null;
+let hostAttached = false;
 
 function enabled() {
-    return !!configRead('enableDebugBridge');
+    return hostAttached || !!configRead('enableDebugBridge');
 }
 
 function endpoint() {
@@ -183,8 +187,28 @@ function start() {
     queue('info', '[DebugBridge] attached: ' + location.href);
 }
 
+function checkAttached() {
+    if (configRead('enableDebugBridge')) return;
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', endpoint() + '/debug/attached', true);
+    xhr.timeout = 3000;
+    xhr.onload = () => {
+        let attached = false;
+        try {
+            attached = !!JSON.parse(xhr.responseText).attached;
+        } catch (e) { }
+        if (attached !== hostAttached) {
+            hostAttached = attached;
+            if (attached) start();
+        }
+    };
+    xhr.send();
+}
+
 configChangeEmitter.addEventListener('configChange', (e) => {
     if (e.detail && e.detail.key === 'enableDebugBridge') start();
 });
 
 start();
+setInterval(checkAttached, ATTACH_CHECK_INTERVAL);
+checkAttached();
