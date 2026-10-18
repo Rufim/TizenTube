@@ -62,7 +62,8 @@
                     "ttWelcomeMsg": "Show TT Welcome Message",
                     "guestSignInReminder": "Show Guest Sign In Reminder",
                     "reloadHomeOnStartup": "Reload Home on Startup",
-                    "voiceSearch": "Voice Search via Local GigaAM"
+                    "voiceSearch": "Voice Search via Local GigaAM",
+                    "debugBridge": "Debug bridge (console to logcat, remote JS)"
                 }
             },
             "subtitles": {
@@ -107,7 +108,16 @@
                     },
                     "codecAny": "Any",
                     "qualityAuto": "Auto",
-                    "hideRelatedVideosPlayer": "Hide Related Videos"
+                    "hideRelatedVideosPlayer": "Hide Related Videos",
+                    "voiceOver": {
+                        "title": "Voice-over translation (Yandex)",
+                        "subtitle": "Russian voice-over from Yandex, played by the TizenTube app itself",
+                        "showButton": "Show the Y button in the player",
+                        "originalVolume": "Original volume during translation",
+                        "originalVolumeSubtitle": "How loud the video stays while the translation plays",
+                        "translationVolume": "Translation volume",
+                        "translationVolumeSubtitle": "Volume of the voice-over track"
+                    }
                 }
             },
             "time": {
@@ -291,7 +301,10 @@
             "button": "Share",
             "qrCodeScanMessage": "Scan the QR code below to share this video."
         },
-        "screenOff": "Turn off screen"
+        "screenOff": "Turn off screen",
+        "voiceOver": {
+            "button": "Voice-over translation (Y)"
+        }
     },
     "videoMenu": {
         "notInterested": "Not interested",
@@ -310,6 +323,17 @@
         "sidebarContentsUpdated": {
             "title": "Sidebar Contents Updated",
             "subtitle": "The sidebar contents have been updated."
+        },
+        "voiceOver": {
+            "title": "Voice-over translation",
+            "waiting": "Yandex is preparing the translation…",
+            "waitingMinutes": "Yandex is preparing the translation, about {{minutes}} min left",
+            "partial": "Only the beginning is translated so far, the rest will follow",
+            "failed": "Yandex could not translate this video",
+            "unavailable": "The translation module does not respond at 127.0.0.1:8777. Is the TizenTube APK with voice-over installed?",
+            "alreadyRussian": "This video is already in Russian",
+            "noVideo": "Open a video first",
+            "live": "Live streams are not supported"
         }
     }
 }

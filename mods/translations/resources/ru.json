@@ -62,7 +62,8 @@
                     "ttWelcomeMsg": "Приветственное сообщение",
                     "guestSignInReminder": "Напоминания о гостевом входе",
                     "reloadHomeOnStartup": "Обновлять главную при запуске",
-                    "voiceSearch": "Голосовой поиск через GigaAM"
+                    "voiceSearch": "Голосовой поиск через GigaAM",
+                    "debugBridge": "Отладочный мост (консоль в logcat, JS с компьютера)"
                 }
             },
             "subtitles": {
@@ -107,7 +108,16 @@
                     },
                     "codecAny": "Любой",
                     "qualityAuto": "Авто",
-                    "hideRelatedVideosPlayer": "Скрывать похожие видео"
+                    "hideRelatedVideosPlayer": "Скрывать похожие видео",
+                    "voiceOver": {
+                        "title": "Закадровый перевод (Яндекс)",
+                        "subtitle": "Русская озвучка от Яндекса, играет само приложение TizenTube",
+                        "showButton": "Показывать кнопку Y в плеере",
+                        "originalVolume": "Громкость оригинала при переводе",
+                        "originalVolumeSubtitle": "Насколько громко звучит видео, пока играет перевод",
+                        "translationVolume": "Громкость перевода",
+                        "translationVolumeSubtitle": "Громкость дорожки с озвучкой"
+                    }
                 }
             },
             "uiSettings": {
@@ -291,7 +301,10 @@
             "button": "Поделиться",
             "qrCodeScanMessage": "Отсканируйте QR-код ниже, чтобы поделиться этим видео."
         },
-        "screenOff": "Выключить экран"
+        "screenOff": "Выключить экран",
+        "voiceOver": {
+            "button": "Закадровый перевод (Y)"
+        }
     },
     "toasts": {
         "voiceSearch": {
@@ -306,7 +319,18 @@
             "title": "Боковое меню обновлено",
             "subtitle": "Содержимое бокового меню обновлено."
         },
-        "feedbackSent": "Feedback sent."
+        "feedbackSent": "Feedback sent.",
+        "voiceOver": {
+            "title": "Закадровый перевод",
+            "waiting": "Яндекс готовит перевод…",
+            "waitingMinutes": "Яндекс готовит перевод, осталось около {{minutes}} мин",
+            "partial": "Пока переведено только начало, остальное подгрузится",
+            "failed": "Яндекс не смог перевести это видео",
+            "unavailable": "Модуль перевода не отвечает на 127.0.0.1:8777. Установлен APK TizenTube с переводом?",
+            "alreadyRussian": "Видео и так на русском",
+            "noVideo": "Сначала откройте видео",
+            "live": "Прямые трансляции не поддерживаются"
+        }
     },
     "videoMenu": {
         "notInterested": "Not interested",

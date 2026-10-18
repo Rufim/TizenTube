@@ -70,6 +70,11 @@ const defaultConfig = {
   hideRelatedVideosPlayer: false,
   enableVoiceSearch: true,
   voiceSearchEndpoint: 'http://127.0.0.1:8765',
+  enableVoiceOverButton: true,
+  voiceOverOriginalVolume: 15,
+  voiceOverVolume: 100,
+  voiceOverEndpoint: 'http://127.0.0.1:8777',
+  enableDebugBridge: false,
 };
 
 let localConfig;

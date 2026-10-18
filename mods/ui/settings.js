@@ -309,6 +309,10 @@ export default function modernUI(update, parameters) {
                 {
                     name: t('settings.options.misc.options.voiceSearch'),
                     value: 'enableVoiceSearch'
+                },
+                {
+                    name: t('settings.options.misc.options.debugBridge'),
+                    value: 'enableDebugBridge'
                 }
             ]
         },
@@ -414,6 +418,57 @@ export default function modernUI(update, parameters) {
                             value: increment
                         }
                     })
+                },
+                {
+                    name: t('settings.options.videoPlayer.options.voiceOver.title'),
+                    icon: 'TRANSLATE',
+                    value: null,
+                    menuId: 'tt-voice-over-settings',
+                    menuHeader: {
+                        title: t('settings.options.videoPlayer.options.voiceOver.title'),
+                        subtitle: t('settings.options.videoPlayer.options.voiceOver.subtitle')
+                    },
+                    options: [
+                        {
+                            name: t('settings.options.videoPlayer.options.voiceOver.showButton'),
+                            icon: 'TRANSLATE',
+                            value: 'enableVoiceOverButton'
+                        },
+                        {
+                            name: t('settings.options.videoPlayer.options.voiceOver.originalVolume'),
+                            icon: 'VOLUME_DOWN',
+                            value: null,
+                            menuId: 'tt-voice-over-original-volume',
+                            menuHeader: {
+                                title: t('settings.options.videoPlayer.options.voiceOver.originalVolume'),
+                                subtitle: t('settings.options.videoPlayer.options.voiceOver.originalVolumeSubtitle')
+                            },
+                            options: [0, 5, 10, 15, 20, 30, 40, 50, 75, 100].map((volume) => {
+                                return {
+                                    name: `${volume}%`,
+                                    key: 'voiceOverOriginalVolume',
+                                    value: volume
+                                }
+                            })
+                        },
+                        {
+                            name: t('settings.options.videoPlayer.options.voiceOver.translationVolume'),
+                            icon: 'VOLUME_UP',
+                            value: null,
+                            menuId: 'tt-voice-over-volume',
+                            menuHeader: {
+                                title: t('settings.options.videoPlayer.options.voiceOver.translationVolume'),
+                                subtitle: t('settings.options.videoPlayer.options.voiceOver.translationVolumeSubtitle')
+                            },
+                            options: [10, 25, 40, 50, 60, 75, 90, 100].map((volume) => {
+                                return {
+                                    name: `${volume}%`,
+                                    key: 'voiceOverVolume',
+                                    value: volume
+                                }
+                            })
+                        }
+                    ]
                 },
                 {
                     name: t('settings.options.videoPlayer.options.hideRelatedVideosPlayer'),

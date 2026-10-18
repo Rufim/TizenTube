@@ -3,6 +3,7 @@ if (window.location.hostname === 'localhost') {
     initPatches();
 }
 import "./features/userAgentSpoofing.js";
+import "./features/debugBridge.js";
 import "whatwg-fetch";
 import "core-js/proposals/object-getownpropertydescriptors";
 
@@ -26,3 +27,5 @@ import "./ui/customGuideAction.js";
 import "./features/autoFrameRate.js";
 import "./ui/clock.js";
 import "./features/voiceSearch.js";
+import "./features/voiceOver.js";
+import "./ui/voiceOverButton.js";

@@ -2,6 +2,7 @@ import { configWrite, configRead } from './config.js';
 import { enablePip } from './features/pictureInPicture.js';
 import modernUI, { optionShow } from './ui/settings.js';
 import { speedSettings } from './ui/speedUI.js';
+import { toggleVoiceOver } from './features/voiceOver.js';
 import { showToast, buttonItem, showModal, QrCodeRenderer, overlayPanelItemListRenderer, overlayMessageRenderer } from './ui/ytUI.js';
 import checkForUpdates from './features/updater.js';
 import { t } from 'i18next';
@@ -216,6 +217,9 @@ function customAction(action, parameters) {
             break;
         case 'TT_SPEED_SETTINGS_SHOW':
             speedSettings();
+            break;
+        case 'TT_VOICE_OVER_TOGGLE':
+            toggleVoiceOver();
             break;
         case 'UPDATE_REMIND_LATER':
             configWrite('dontCheckUpdateUntil', parameters);

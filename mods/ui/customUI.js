@@ -4,6 +4,7 @@ import { extractAssignedFunctions } from "../utils/ASTParser.js";
 import { configRead } from "../config.js";
 import { ButtonRenderer } from "./ytUI.js";
 import { t } from 'i18next';
+import { VOICE_OVER_BUTTON_TYPE, VOICE_OVER_BUTTON_ICON, voiceOverButtonLabel } from "./voiceOverButton.js";
 
 function applyPatches() {
     if (!window._yttv) return setTimeout(applyPatches, 250);
@@ -119,6 +120,33 @@ function applyPatches() {
                         )
                     }
                 });
+                return res;
+            }
+        }
+
+        if (engagementActionButton && configRead('enableVoiceOverButton')) {
+            const origEngagementActionButton = inst[engagementActionButton];
+            inst[engagementActionButton] = function () {
+                const res = origEngagementActionButton.apply(this, arguments);
+                if (res.find(item => item.type === VOICE_OVER_BUTTON_TYPE)) return res;
+                const speedIdx = res.findIndex(item => item.type === 'TRANSPORT_CONTROLS_BUTTON_TYPE_SPEED');
+                const button = {
+                    type: VOICE_OVER_BUTTON_TYPE,
+                    button: {
+                        buttonRenderer: ButtonRenderer(
+                            false,
+                            voiceOverButtonLabel(),
+                            VOICE_OVER_BUTTON_ICON,
+                            {
+                                customAction: {
+                                    action: 'TT_VOICE_OVER_TOGGLE',
+                                }
+                            }
+                        )
+                    }
+                };
+                if (speedIdx !== -1) res.splice(speedIdx + 1, 0, button);
+                else res.push(button);
                 return res;
             }
         }

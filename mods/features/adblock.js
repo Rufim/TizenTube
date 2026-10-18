@@ -5,6 +5,7 @@ import { timelyAction, longPressData, MenuServiceItemRenderer, ShelfRenderer, Ti
 import { findFeedbackToken } from '../utils/innerTubeCalls.js';
 import { PatchSettings } from '../ui/customYTSettings.js';
 import { t } from 'i18next';
+import { rememberPlayerResponse } from './playerMeta.js';
 
 /**
  * This is a minimal reimplementation of the following uBlock Origin rule:
@@ -25,6 +26,10 @@ JSON.parse = function () {
     if (r?.playbackContext?.contentPlaybackContext) {
       // Handle inline playback without ads
       console.log(r.playbackContext.contentPlaybackContext);
+    }
+
+    if (r?.videoDetails?.videoId) {
+      rememberPlayerResponse(r);
     }
 
     if (r.adPlacements && adBlockEnabled) {
