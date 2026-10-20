@@ -64,8 +64,9 @@ function ensureStyle() {
     if (!document.head) return;
     if (!style) {
         style = document.createElement('style');
-        // YouTube's CSP only lets styles with the page nonce through.
-        const nonced = document.querySelector('style[nonce], script[nonce]');
+        // YouTube's CSP only lets styles with the page's style nonce through
+        // (scripts have a different one).
+        const nonced = document.querySelector('style[nonce]');
         if (nonced && nonced.nonce) style.nonce = nonced.nonce;
     }
     style.textContent = buildCss(label);
